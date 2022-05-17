@@ -1,0 +1,157 @@
+초를 입력받아서 시, 분, 초로 출력
+단 첫 단위시간이 0이면 생략한다
+ex) 	0시 0분 30초, 0분 30초 	 --> XX
+	30초, 1분 30초		--> OO
+
+
+풀이
+
+Scanner input=new Scanner(System.in);
+System.out.print("초 입력 : ");
+int num=input.nextInt();
+if(num<0){
+	System.out.println("입력하신 숫자가 음수입니다.");
+	}
+
+else if(num<60) {
+	System.out.println((num%60)+"초");
+			
+}
+
+else if(num <3600) {
+	System.out.println((num/60)+"분 "+(num%60)+"초");
+	}
+		
+else{
+	System.out.println((num/3600)+"시 "+(num%3600/60)+"분 "+(num%60)+"초");
+	}
+		
+	
+
+
+
+
+현재 온도를 입력받고
+물이 증발했는지 얼어있는지 액체상태로 있는지 출력
+어는점 0도, 끓는점 100도
+
+풀이
+
+Scanner input=new Scanner(System.in);
+System.out.print("현재 온도 입력 : ");
+int num=input.nextInt();
+if (num>=100) {
+	System.out.println("물이 증발했습니다.");
+}else if(num>0) {
+	System.out.println("물이 액체상태입니다.");
+}else {
+	System.out.println("물이 얼어있습니다.");
+}
+
+public static void main(String[] args) {
+		//100만원이 있는 계좌에서 만원 단위로 돈을 입력해서
+		//인출한뒤 잔액 출력하기
+		//인출할 금액이 100만원 보다 많을시 잔액부족 출력
+		int bank = 1000000;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("인출할 금액을 입력해 주십시오");
+		int a =sc.nextInt();
+		if(a > bank) {
+			System.out.println("잔액이 부족합니다.");
+		}else if(a % 10000 != 0) {
+			System.out.println("만원 단위로만 인출 가능합니다.");
+		}else {
+			System.out.println(a + "원을 출금합니다.");
+			System.out.println("잔액은" + (bank - a) +"원 입니다.");
+		}
+	}
+
+
+
+
+public static void main(String[] args) {
+		//정수 3개를 입력받아 최대값과 최소값을 구하시오 
+		Scanner sc = new Scanner(System.in);
+	        System.out.print("정수 3개 입력: ");
+	        int num1 = sc.nextInt();
+	        int num2 = sc.nextInt();
+	        int num3 = sc.nextInt();
+	        int max = num1;
+	        int min = num1;
+	        
+	        if (num2 < num3) {
+	            if (num3 > max) {
+	                max = num3;
+	            } 
+	        } else if (num2 > max) {
+	            max = num2;
+	        }
+	        
+	        if (num2 < num3) {
+	            if (num2 < min) {
+	                min = num2;
+	            }else if (num3 < min) {
+	                min = num3;
+	            }
+	        }
+	        System.out.println("최대값 : " + max);
+	        System.out.println("최소값 : " + min);
+}
+
+
+		// 학번(숫자 6개)과 국어, 영어, 수학 3과목의 점수를 입력받고
+		// 평균점수가 60점 미만일 경우 재시험 대상자 입니다 출력, 평균점수가 95점 이상일 경우 장학금 대상자 입니다. 출력 단, 학번이 197604 일 경우 장학금 대상자에서 제외.
+		// 학번이 맞지않거나, 점수가 100점이 넘어 갈 경우 잘못입력하셨습니다. 입력정보를 확인하세요 출력. [학번은 1로 시작.]
+		// 공통 출력 : 평균점수 - 평균 점수는 소숫점 첫번째 자리까지만 출력, 학번은 int형으로 입력
+		
+		Scanner sc = new Scanner(System.in);
+		int num, kor, eng, math;
+		float avg;
+		System.out.print("학번을 입력하세요 : ");
+		num = sc.nextInt();
+		System.out.print("국어 점수 : ");
+		kor = sc.nextInt();
+		System.out.print("영어 점수 : ");
+		eng = sc.nextInt();
+		System.out.print("수학 점수 : ");
+		math = sc.nextInt();
+		avg = (kor+eng+math)/3;
+		if(num < 100000 || num > 199999 || kor > 100 || eng > 100 || math > 100) {
+			System.out.println("잘못입력하셨습니다. 입력정보를 확인하세요");
+		}else{
+			System.out.printf("%.1f점 입니다.", avg);
+			if(avg >= 95) {
+				if(num == 197604) {
+					
+				}else {
+					System.out.println("장학금 대상자 입니다.");
+				}
+			}else if(avg < 60) {
+				System.out.println("재시험 대장자 입니다.");
+			}
+		}
+		
+		//키를 입력받고 키가 120cm 이상 130cm 미만일 경우 보호자 동승 여부 확인. (1. 보호자 동승 2. 보호자 없음) 120cm 미만 일 경우 탑승이 불가능합니다 출력. 130cm 이상일 경우 즐거운 하루 되세요 출력.
+		// 1번일 경우 보호자와 함께 안전하게 탑승해 주세요 출력. 2번일 경우 보호자와 함께 탑승이 필요합니다 출력 1,2번 외에 입력 시 잘못 입력하셨습니다 출력
+		Scanner sc = new Scanner(System.in);
+		float height;
+		int num;
+		System.out.print("키를 입력해 주세요 : ");
+		height = sc.nextFloat();
+		
+		if(height<120) {
+			System.out.println("탑승이 불가능 합니다.");
+		}
+		else if(height >= 120 && height < 130) {
+			System.out.print("1. 보호자 동승 // 2. 보호자 없음");
+			num = sc.nextInt();
+			if(num == 2) {
+				System.out.println("보호자와 함께 탑승이 필요합니다.");
+			}else if(num == 1) {
+				System.out.println("보호자와 함께 안전하게 탑승해 주세요.");
+			}else {
+				System.out.println("잘못 입력하셨습니다.");
+			}
+		}else {
+			System.out.println("즐거운 하루 되세요");
+		}

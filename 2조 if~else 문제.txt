@@ -1,0 +1,358 @@
+﻿1-1)
+Q)
+주사위 2개의 결과값을 입력 후, 두 눈의 합이 짝수면 짝수!, 홀수면 홀수!, 두 눈이 같은 수면 더블!! 을 입력하시오.
+
+
+
+1-2)
+Q)
+짜장면과 짬뽕을 주문 받아서 처리하는 영수증 프로그램입니다.
+짜장면 : 5500원, 짬뽕 : 6000원
+5그릇 이상 주문 : 3천원 할인, 10그릇 이상 주문 : 10% 할인
+
+
+짜장면 주문 갯수 : x(입력) 그릇
+짬뽕 주문 갯수 : y(입력( 그릇
+
+******주문 내용******
+[짜장면]
+가격 : 5500원
+주문 : x 그릇
+
+[짬뽕면]
+가격 : 6000원
+주문 : y 그릇
+
+(할인 받을시) 할인 금액 : ___원
+지불 금액 : ___원
+
+
+
+2-1)
+Q)
+점수를 입력받아 학점을 부여하시오
+90점 이상이면 A
+80점 이상 90점 미만이면 B
+70점 이상 80점 미만이면 C
+60점 이상 70점 미만이면 D
+60점 미만이면 F
+
+
+
+2-2)
+Q)
+키가 110cm 이상일 시 놀이기구 탑승가능
+키가 110cm 미만일 시 보호자가 옆에 있어야 탑승가능
+키가 110cm미만일 경우 있는지 여부 출력
+보호자가 없을시 보호자동반시 탑승가능 문구 출력
+
+
+
+3-1)
+Q)
+0~50중 임의의 수를 입력 받아 7의 배수이면 "7의 배수 출력",
+7의 배수가 아니면 "7의 배수 아님" 출력,
+수가 7보다 크면서 짝수일 경우 "짝수"
+7보다 작으면서 홀수일 경우 "홀수"
+51이상의 값들은 해당 없음
+
+
+
+3-2)
+Q)
+성별 선택 후 나이 입력 
+성별 선택이 잘못되었을 경우
+잘못 선택하였습니다 출력
+
+
+
+4-1)
+Q)
+1, 2, 3학년 성적 입력 후 평균이 80 넘으면 합격, 안넘으면 불합격
+
+
+
+4-2)
+Q)
+금액 입력하고 20000원 넘으면 일식, 10000~20000원 중식, 1000~10000원 한식, 1000원 미만 굶어
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------
+1-1)
+Q)
+주사위 2개의 결과값을 입력 후, 두 눈의 합이 짝수면 짝수!, 홀수면 홀수!, 두 눈이 같은 수면 더블!! 을 입력하시오.
+
+A)
+Scanner sc = new Scanner(System.in);
+		
+		int fnum, snum, tnum;
+		
+		System.out.print("첫번째 주사위 결과 입력 : ");
+		fnum = sc.nextInt();
+		
+		System.out.print("두번째 주사위 결과 입력 : ");
+		snum = sc.nextInt();
+		
+		tnum = fnum + snum;
+		if(fnum < 7 && snum < 7) {
+			if(tnum % 2 == 0) {
+				if(fnum == snum) {
+					System.out.println("더블!!");
+				}else {
+					System.out.println("짝수!");
+				}
+			}else {
+				System.out.println("홀수!");
+			}
+		}else {
+			System.out.println("결과를 다시 입력하세요.");
+		}
+
+
+--------------------------------------------------------------------------------------
+1-2)
+Q)
+짜장면과 짬뽕을 주문 받아서 처리하는 영수증 프로그램입니다.
+짜장면 : 5500원, 짬뽕 : 6000원
+5그릇 이상 주문 : 3천원 할인, 10그릇 이상 주문 : 10% 할인
+
+
+짜장면 주문 갯수 : x(입력) 그릇
+짬뽕 주문 갯수 : y(입력( 그릇
+
+******주문 내용******
+[짜장면]
+가격 : 5500원
+주문 : x 그릇
+
+[짬뽕면]
+가격 : 6000원
+주문 : y 그릇
+
+(할인 받을시) 할인 금액 : ___원
+지불 금액 : ___원
+
+A)
+Scanner sc = new Scanner(System.in);
+		
+		int zzangPrice = 5500, zzamPrice = 6000;
+		int zzangCount, zzamCount, totalPrice, dc = 0;
+		
+		System.out.print("짜장면 주문 갯수 : ");
+		zzangCount = sc.nextInt();
+		
+		System.out.print("짬뽕 주문 갯수 : ");
+		zzamCount = sc.nextInt();
+		
+		totalPrice = ((zzangCount * zzangPrice) + (zzamCount * zzamPrice));
+		
+		if((zzangCount + zzamCount) >= 10) {
+			dc = totalPrice/10;
+			totalPrice = totalPrice - dc;
+		}else if((zzangCount + zzamCount) >= 5){
+			dc = 3000;
+			totalPrice = totalPrice - dc;
+		}
+		
+		System.out.println("\n*****주문 내용 영수증*****");
+		System.out.println("[짜장면]");
+		System.out.println("가격 : " + zzangPrice + "원");
+		System.out.println("주문 : " + zzangCount + " 그릇\n");
+		
+		System.out.println("[짬뽕]");
+		System.out.println("가격 : " + zzamPrice + "원");
+		System.out.println("주문 : " + zzamCount + " 그릇\n");
+		
+		if((zzangCount + zzamCount) >= 5) {
+			System.out.println("할인 금액 : " + dc + " 원");
+			System.out.println("지불 금액 : " + totalPrice + " 원");
+		}else {
+			System.out.println("지불 금액 : " + totalPrice + " 원");
+		}
+
+
+--------------------------------------------------------------------------------------
+2-1)
+Q)
+점수를 입력받아 학점을 부여하시오
+90점 이상이면 A
+80점 이상 90점 미만이면 B
+70점 이상 80점 미만이면 C
+60점 이상 70점 미만이면 D
+60점 미만이면 F
+
+A)
+Scanner input = new Scanner(System.in);
+      int num;
+      System.out.println("점수 입력");
+      num = input.nextInt();
+      if(num > 90) {
+         System.out.println('A');
+      }else if(num >= 80) {
+         System.out.println('B');
+      }else if(num >= 70) {
+         System.out.println('C');
+      }else if(num >= 60) {
+         System.out.println('D');
+      }else  {
+         System.out.println('F');
+      }
+
+
+--------------------------------------------------------------------------------------
+2-2)
+Q)
+키가 110cm 이상일 시 놀이기구 탑승가능
+키가 110cm 미만일 시 보호자가 옆에 있어야 탑승가능
+키가 110cm미만일 경우 있는지 여부 출력
+보호자가 없을시 보호자동반시 탑승가능 문구 출력
+
+A)
+Scanner input = new Scanner(System.in);
+      int num; 
+      System.out.println("당신의 키는 몇 cm입니까?");
+      num = input.nextInt();
+      if(num > 110) {
+      System.out.println("110cm 이상입니다 탑승가능합니다");
+      }else if(num < 110) {
+      System.out.println("110cm 미만입니다 보호자와 함께 탑승하십시오");
+      System.out.println("보호자가 있습니까? 1:예 2:아니오");
+      num = input.nextInt();
+      if(num == 1) {
+         System.out.println("탑승 가능합니다");
+         num = input.nextInt();
+      }else if(num == 2) {
+         System.out.println("탑승 불가능합니다 보호자랑 함께오세요");
+      }else {
+         System.out.println("다시 입력해주세요");
+         }
+      }
+
+
+--------------------------------------------------------------------------------------
+3-1)
+Q)
+0~50중 임의의 수를 입력 받아 7의 배수이면 "7의 배수 출력",
+7의 배수가 아니면 "7의 배수 아님" 출력,
+수가 7보다 크면서 짝수일 경우 "짝수"
+7보다 작으면서 홀수일 경우 "홀수"
+51이상의 값들은 해당 없음
+
+A)
+int num;
+    Scanner input = new Scanner(System.in);
+    System.out.print("수 입력");
+    num = input.nextInt();
+    if (num%7==0 && num<51) {
+       System.out.println("7의 배수");
+    }else if (num>7 && num%2==0 && num<51) {
+       System.out.println("짝수");
+    }else if (num<=7 && num%2!=0 && num<51) {
+       System.out.println("홀수");
+    }else if (num%7!=0 && num<51) {
+       System.out.println("7의 배수 아님");
+    }
+    else {
+       System.out.println("해당 없음");
+    }
+
+
+--------------------------------------------------------------------------------------
+3-2)
+Q)
+성별 선택 후 나이 입력 
+성별 선택이 잘못되었을 경우
+잘못 선택하였습니다 출력
+
+A)
+Scanner input = new Scanner(System.in);
+   int num;
+   
+   System.out.println("성별을 선택해주세요");
+   System.out.println("---------------");
+   System.out.println("1.남자");
+   System.out.println("2.여자");
+   System.out.println("3.기타");
+   System.out.println("---------------");
+System.out.print(">>>>>>> : ");
+num = input.nextInt();
+if(num == 1) 
+{System.out.println("---------------");
+System.out.println("남자입니다.");
+System.out.println("나이를 입력해주세요.");
+System.out.println("---------------");
+System.out.print(">>>>>>> : ");
+num = input.nextInt();
+System.out.println("---------------");
+System.out.println("남자 "+num+" 살 입니다.");
+}else if(num == 2) {
+   System.out.println("---------------");
+   System.out.println("여자입니다.");
+   System.out.println("나이를 입력해주세요.");
+   System.out.println("---------------");
+   System.out.print(">>>>>>> : ");
+   num = input.nextInt();
+   System.out.println("---------------");
+   System.out.println("여자 "+num+" 살 입니다.");
+   
+}else if(num == 3) {
+   System.out.println("---------------");
+   System.out.println("기타입니다.");
+   System.out.println("나이를 입력해주세요.");
+   System.out.println("---------------");
+   System.out.print(">>>>>>> : ");
+   num = input.nextInt();
+   System.out.println("---------------");
+   System.out.println("기타 "+num+" 살 입니다.");
+   }else {
+      System.out.println("잘못 선택하였습니다.");
+      }
+
+
+--------------------------------------------------------------------------------------
+4-1)
+Q)
+1, 2, 3학년 성적 입력 후 평균이 80 넘으면 합격, 안넘으면 불합격
+
+A)
+Scanner input = new Scanner(System.in);
+      System.out.println("1학년 성적 : ");
+      int score1 = input.nextInt();
+      System.out.println("2학년 성적 : ");
+      int score2 = input.nextInt();
+      System.out.println("3학년 성적 : ");
+      int score3 = input.nextInt();
+      
+      int sum = score1+score2+score3;
+      double avg = sum / 3.0;
+      if(avg >= 80) {
+         System.out.println("합격");
+      }else {
+         System.out.println("불합격");
+      }
+
+
+--------------------------------------------------------------------------------------
+4-2)
+Q)
+금액 입력하고 20000원 넘으면 일식, 10000~20000원 중식, 1000~10000원 한식, 1000원 미만 굶어
+
+A)
+Scanner input = new Scanner(System.in);
+      System.out.println("금액 입력");
+      int money = input.nextInt();
+      
+      if(money >= 20000) {
+         System.out.println("일식");
+      }else if(money < 20000 && money >= 10000) {
+         System.out.println("중식");
+      }else if(money < 10000 && money >= 1000) {
+         System.out.println("한식");
+      }else {
+         System.out.println("굶어ㅠㅠ");
+      }

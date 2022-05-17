@@ -1,0 +1,208 @@
+Q1.
+숫자 두개를 입력 받는다.
+두 숫자의 합이 짝수이면 짝수 출력
+홀수라면 홀수 출력
+
+Q2.
+숫자 하나를 입력 받는다.
+그 숫자를 3으로나눈 몫과 나머지의 합이 짝수이고 +10한 값이 입력한 숫자보다 작다면 "짝수이며 입력한 숫자가 더 크다" 출력
+입력한 값이 더 작을경우 "짝수이며 입력한 숫자가 더 작다" 출력 같을경우 "짝수이며 입력한 숫자와 같다" 출력
+숫자를 3으로나눈 몫과 나머지의 합이 홀수이고 +10한 값이 입력한 숫자보다 작다면 출력
+입력한 값이 더 작을경우 출력 같을경우 출력
+
+Q3.음료자판기
+음료를 선택지에서 입력받는다. 선택지에 없는 숫자라면 다시 입력해주세요 문구 출력
+넣을 금액을 입력 한다. 넣은 금액이 음료 가격보다 적다면 금액이 부족합니다 출력
+선택한 음료와  가격출력
+남은 잔액 출력
+
+Q4.
+키와 나이를 입력받는다 
+키가 125이상 나이 65세 이하일시 범퍼카 탑승 가능
+키가 125미만일때 125이상만 탑승 가능합니다 출력
+65세 초과일때 65세 이하만 탑승 가능합니다 출력
+
+Q5. 
+번호를 입력받아 로그인 방법 선택
+개인으로 로그인 - 로그인 하였습니다 출력 
+관리자로 로그인 - 비밀번호를 입력받아서 로그인 
+(로그인 하였습니다 / 비밀번호 오류 출력 ) 
+그 외 잘못된 접근이라고 출력  
+*관리자 비밀번호 = 1234
+
+Q6.
+나이 , 관람하고 싶은 영화번호 입력받아
+(15세이상관람영화 1개, 나이 제한 없는 영화 1개) 
+연령제한 걸리면 해당 영화 관람 불가 출력
+안 걸릴 경우 즐겁게 관람하시오 출력 
+
+
+
+
+
+
+
+A1.
+
+		Scanner scan = new Scanner(System.in);
+		System.out.print("수 입력 : ");
+		int input1 = scan.nextInt();
+		int input2 = scan.nextInt();
+		int sum = input1 + input2;
+		
+		if(sum % 2 == 0) {
+			System.out.println("짝수");
+		}else {
+			System.out.println("홀수");
+		}
+
+
+
+A2. 
+
+		Scanner scan = new Scanner(System.in);
+	
+		System.out.print("수 입력 : ");
+		int input = scan.nextInt();
+		int sum = input / 3 + input % 3; 
+		if(sum % 2 == 0) {
+			if(input > sum + 10) {
+				System.out.println("짝수이며 입력한 숫자가 더 크다");
+			}else if(input == sum + 10){
+				System.out.println("짝수이며 입력한 숫자와 같다");
+			}else {
+				System.out.println("짝수이며 입력한 숫자가 더 작다");
+			}
+		}else {
+			if(input > sum + 10) {
+				System.out.println("홀수이며 입력한 숫자가 더 크다");
+			}else if(input == sum + 10) {
+				System.out.println("홀수이며 입력한 숫자와 같다");
+			}else {
+				System.out.println("홀수이며 입력한 숫자가 더 작다");
+			}
+		}
+
+
+
+A3.
+		Scanner input = new Scanner(System.in);
+		int num, money, total;
+		int  price = 0;
+		String menu = null;
+		
+		System.out.println("┌-----*음료 자판기*----┐");
+		System.out.println("|1.    사이다   1000원|");
+		System.out.println("|2.    캔커피    800원|");
+		System.out.println("|3.     콜라   1500원|");
+		System.out.println("|4.     생수    500원|");
+		System.out.println("└-------------------┘");
+		
+		System.out.print("메뉴를 선택하세요: ");
+		num = input.nextInt();
+		System.out.print("넣으실 금액권을 입력하세요 : ");
+		money = input.nextInt();
+		
+		if (num == 1) {
+			price = 2000;
+			menu = "사이다";
+		}else if (num == 2) {
+			price = 3000;
+			menu = "캔커피";
+		}else if (num == 3) {
+			price = 3500;
+			menu = "콜라";
+		}else if (num == 4) {
+			price = 4000;
+			menu = "생수";
+		}else {
+			System.out.println("다시 입력해주세요");
+		}
+		System.out.println("==========================");
+		total = money - price;
+		if(total<0) {
+			System.out.println("금액이 부족합니다");
+		}else {
+			System.out.println("주문하신 음료는 "+menu+" "+price+"원입니다.");
+			System.out.println("남은 잔액은 "+total+"원입니다.");
+		}
+
+
+
+A4.
+		Scanner input = new Scanner(System.in);
+		int height, age;
+		
+		System.out.println("키와 나이를 입력해주세요");
+		System.out.print("키 : ");
+		height = input.nextInt();
+		System.out.print("나이 : ");
+		age = input.nextInt();
+		
+		if(height>=125 && age <= 65) {
+			System.out.println("범퍼카 탑승가능");
+		}else if(height < 125) {
+			System.out.println("125이상만 탑승가능합니다");
+		}else if(age > 65) {
+			System.out.println("65세 이하만 탑승가능합니다");
+		}else {
+			System.out.println("다시 입력해주세요");
+		}
+
+
+
+
+A5. 
+
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("메뉴를 선택하세요");
+		System.out.println("1. 회원으로 로그인");
+		System.out.println("2. 관리자로 로그인");
+		
+		int num = input.nextInt();
+		
+		if(num == 2) {
+			System.out.println("비밀번호를 입력하세요");
+			
+			int pw = input.nextInt();
+			if(pw == 1234) {
+				System.out.println("관리자로 로그인 하였습니다");
+			}else {
+				System.out.println("로그인 실패\n비밀번호를 확인하세요");
+			}
+			
+		}else if(num == 1) {
+			System.out.println("회원으로 로그인 하였습니다");
+		}else {
+			System.out.println("잘못된 접근 방식입니다\n다시입력하세요");
+		}
+		
+
+
+
+
+
+
+A6. 
+
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("나이를 입력하시오");
+		int age = input.nextInt();
+		
+		System.out.println("관람할 영화를 선택하시오");
+		System.out.println("1. 범죄도시2");
+		System.out.println("2. 이웃집 토토로");
+		int num = input.nextInt();
+		
+		if(age >= 15) {
+			System.out.println("즐겁게 관람하세요");
+		}else if(age < 15 && num == 1) {
+			System.out.println("15세미만은 해당 영화를 관람할 수 없습니다.");
+		}else {
+			System.out.println("즐겁게 관람하세요");
+		}
+
+
+
